@@ -1,0 +1,26 @@
+@import "../globalstyles.scss";
+
+.card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    img{
+        width: 100%;
+        background-color: rgba(128, 128, 128, 0.5);
+        aspect-ratio: 2/3;
+        object-fit: cover;
+    }
+    h2{
+        font-size: 1.6rem;
+        font-weight: bold;
+        padding: 1rem 0;
+        color: $brown;
+    }
+    p{
+        padding-bottom: 1rem;
+    }
+    button{
+        justify-self: end;
+        align-self: center;
+    }
+}

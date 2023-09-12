@@ -1,0 +1,32 @@
+@import "../globalstyles.scss";
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    align-items: baseline;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid $primary-color;
+    h1{
+        font-size: 3.8rem;
+        font-weight: bolder;
+        color: $primary-color;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        font-size: 1.6rem;
+        transition: color 0.5s ease-in-out;
+        cursor: pointer;
+        a{
+            color: rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            &:hover{
+                color: $primary-color;
+            }
+        }
+    }
+}

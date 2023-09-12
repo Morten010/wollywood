@@ -1,0 +1,9 @@
+@import "../globalstyles.scss";
+
+.content{
+    display: flex;
+    padding: 2rem 0 0 0;
+    section{
+        flex-grow: 1;  
+    }
+}

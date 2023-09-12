@@ -1,0 +1,37 @@
+@import "../globalstyles.scss";
+.footer{
+    border-top: 2px solid $primary-color;
+    margin-top: 2rem;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    .icons{
+        font-size: 3rem;
+        display: flex;
+        color:  rgba(0, 0, 0, 0.5);
+        gap: 0.5rem;
+        svg{
+            transition: color 0.3s ease-in-out;
+            &:hover{
+                color: black;
+            }
+        }
+    }
+    .info{
+        display: flex;
+        gap: 2rem;
+        span{
+            font-size: 2rem;
+            font-weight: bolder;
+            color: $primary-color;
+        }
+        ul{
+            list-style-type: none;
+            font-size: 1.6rem;
+            a{
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+}

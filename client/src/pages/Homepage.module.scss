@@ -1,0 +1,20 @@
+@import "../globalstyles.scss";
+
+.image{
+    margin-top: 1rem;
+    width: 100%;
+    aspect-ratio: 16/6;
+    border-radius: $rounded;
+    object-fit: cover;
+}
+.movies{
+    display: flex;
+    gap: 2rem;
+}
+@media (max-width: 750px) {
+    .movies{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }    
+}
