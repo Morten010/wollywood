@@ -1,0 +1,20 @@
+.om{
+    display: flex;
+    gap: 2rem;
+    min-height: calc(100vh - 122px - 63px - 6rem);
+    img{
+        width: 35%;
+        aspect-ratio: 1;
+        margin-bottom: auto;
+        margin-top: 4rem;
+        object-fit: cover;
+    }
+}
+@media (max-width: 700px) {
+    .om{
+        flex-direction: column;
+        img{
+            width: 100%;
+        }
+    }
+}

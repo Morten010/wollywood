@@ -1,0 +1,36 @@
+@import "../globalstyles.scss";
+
+.contact{
+    min-height: calc(100vh - 122px - 63px - 6rem);
+    h1{
+        margin-bottom: 1rem;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+        label{
+            display: flex;
+            flex-direction: column;
+            span{
+                font-size: 1.4rem;
+                color: $brown;
+                .red{
+                    color: red;
+                }
+            }
+            input, textarea{
+                font-family: $font;
+                padding: 1rem;
+                background: white;
+                border: unset;
+                border-top: 1px solid #5c1e066a;
+                resize: none;
+            }
+        }
+        button{
+            margin-top: 2rem; 
+            margin-right: auto;
+        }
+    }
+}

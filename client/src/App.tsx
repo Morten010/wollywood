@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Plakater from './pages/Plakater'
 import Om from './pages/Om'
 import Kontakt from './pages/Kontakt'
+import Login from './pages/Login'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/plakater' element={<Plakater />} />
           <Route path='/om' element={<Om />} />
           <Route path='/kontakt' element={<Kontakt />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
