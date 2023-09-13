@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import type {FieldValues} from "react-hook-form"
 import FormError from '../components/FormError'
 import style from "./Kontakt.module.scss"
 
@@ -13,11 +14,17 @@ export default function Kontakt() {
   } = useForm()
 
   const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+  const onSubmit = (data: FieldValues) => {
+    console.log(data);
+  }
   
   return (
     <div className={style.contact}>
       <h1>Kontakt os</h1>
-      <form>
+      <form
+      onSubmit={handleSubmit(onSubmit)}
+      >
         <label>
           <span>
             Dit Navn:
