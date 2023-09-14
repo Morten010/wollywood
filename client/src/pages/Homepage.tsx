@@ -11,7 +11,12 @@ export default function Homepage() {
 
   const {isLoading} = useQuery({
     queryFn: async () => {
+      console.log("ran");
+      
       const {data} = await axios.get("http://localhost:4000/poster/list?limit=2")
+
+      console.log(data);
+      
       return data
     },
     onSuccess: (d: MovieProps[]) => {

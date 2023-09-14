@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BiSolidCartAlt } from 'react-icons/bi'
 import style from "./Cart.module.scss"
 import { useQuery } from 'react-query'
 import axios from 'axios'
-import { MovieProps } from '../types'
+import { CartMovieProps, MovieProps } from '../types'
 import { useLogin } from '../store/userStore'
 
 export default function Cart({
@@ -13,20 +13,28 @@ export default function Cart({
     open: boolean
     setOpen: () => void
 }) {
-    const [data, setData] = useState<MovieProps[]>([])
+    const [data, setData] = useState<CartMovieProps[]>([])
     const [error, setError] = useState("")
     const {user} = useLogin()
 
-    const {isLoading} = useQuery({
+    const {isLoading, refetch} = useQuery({
       queryFn: async () => {
-        const {data} = await axios.get("http://localhost:4000/cart", {
-            headers: {
-                Authorization: `Bearer ${user?.access_token}`
-            }
-        })
-        return data
+        console.log(user);
+        
+        if(user?.access_token){
+            const {data} = await axios.get("http://localhost:4000/cart", {
+                headers: {
+                    Authorization: `Bearer ${user?.access_token}`
+                }
+            })
+            
+            return data
+        } else {
+            return []
+        }
+        
       },
-      onSuccess: (d: MovieProps[]) => {
+      onSuccess: (d: CartMovieProps[]) => {
         console.log(d);
         
         setData(d)
@@ -34,8 +42,13 @@ export default function Cart({
       onError: () => {
         setError("kunne ikke få fat i dataen prøv of refresh siden eller kom tilbage senere.")
       },
-      queryKey: ["home"]
+      queryKey: ["cart"]
     })
+
+    useEffect(() => {
+      refetch()
+    }, [open, user])
+    
 
   return (
     <>
@@ -46,15 +59,15 @@ export default function Cart({
             <div
             className={style.cartModal}
             >
-                {data[0] && data.map((item: MovieProps) => (
+                {data[0] && data.map((item) => (
                     <div className={style.cartCard}>
-                        <img src={item.image} alt={item.name + " " + "poster"} />
+                        <img src={item.poster.image} alt={item.poster.name + " " + "poster"} />
                         <div>
                             <h3>
-                                {item.name}
+                                {item.poster.name}
                             </h3>
                             <p>
-                                {item.price} dkk
+                                {item.poster.price} dkk
                             </p>
                         </div>
                     </div>

@@ -52,10 +52,12 @@ export default function Details() {
         onSuccess: (d: MovieDetails) => {
           setData(d)
         },
-        onError: () => {
+        onError: (err) => {
           setError("kunne ikke få fat i dataen prøv of refresh siden eller kom tilbage senere.")
+          console.log(err);
+          
         },
-        queryKey: ["home"]
+        queryKey: ["details"]
       })
       console.log(data);
       

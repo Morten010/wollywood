@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 type User = {
     firstname: string
@@ -13,12 +14,19 @@ interface BearState {
     removeLogin: () => void,
   }
 
-export const useLogin = create<BearState>()((set) => ({
-    user: null,
-    setLogin: (user) => set((state) => ({ 
-       user: user
-    })),
-    removeLogin: () => set({  
-        user: null
-    }),
-}))
+export const useLogin = create<BearState>()(
+    persist(
+    (set) => ({
+        user: null,
+        setLogin: (user) => set((state) => ({ 
+            user: user
+        })),
+        removeLogin: () => set({  
+            user: null
+        }),
+    }), 
+    {
+        name: "login",
+        storage: createJSONStorage(() => localStorage)
+    }
+))
