@@ -5,7 +5,8 @@ import style from "./MovieCard.module.scss"
 export default function MovieCard({movie}: {
     movie: MovieProps
 }) {
-    
+  
+
   return (
     <div
     className={style.card}

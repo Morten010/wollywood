@@ -1,0 +1,21 @@
+@import "../globalstyles.scss";
+.dropNav{
+    display: none !important;
+    flex-direction: column; 
+    width: 100%;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+    background: #fff;
+    border: $primary-color 1px solid;
+    padding: 1rem;
+    transform: translateY(calc(100% + 1rem));
+}
+
+@media (max-width: 720px) {
+    .dropNav{
+        display: flex !important;
+    }
+}

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import type {FieldValues} from "react-hook-form"
 import FormError from '../components/FormError'
 import style from "./Kontakt.module.scss"
 
 export default function Kontakt() {
+  const [sucess, setSucess] = useState("")
   const {
     register,
     handleSubmit,
@@ -17,6 +18,7 @@ export default function Kontakt() {
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
+    setSucess("Email sendt")
   }
   
   return (
@@ -87,6 +89,14 @@ export default function Kontakt() {
           >
             Send
           </button>
+          {sucess && (
+            <p
+            style={{ color: "green" }}
+            >
+              {sucess}
+            </p>
+          )}
+          
         </form>
     </div>
   )

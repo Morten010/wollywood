@@ -20,3 +20,24 @@
         }
     }
 }
+@media (max-width: 900px) {
+    .movieCard{
+       img{
+        width: 25%;
+       }
+    }    
+}
+@media (max-width: 650px) {
+    .movieCard{
+       img{
+        width: 40%;
+       }
+    }    
+}
+@media (max-width: 500px) {
+    .movieCard{
+       img{
+        width: 50%;
+       }
+    }    
+}

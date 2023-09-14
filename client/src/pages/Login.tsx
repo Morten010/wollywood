@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import style from "./kontakt.module.scss"
 import type {FieldValues} from "react-hook-form"
 import FormError from '../components/FormError'
 import {useForm  } from "react-hook-form"
 import axios from 'axios'
+import { useLogin } from '../store/userStore'
+import { Navigate, redirect } from 'react-router-dom'
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [success, setSuccess] = useState("")
+  const [error, setError] = useState("")
   const {
       register,
       handleSubmit,
@@ -14,12 +19,26 @@ export default function Login() {
       getValues,
     } = useForm()
     
+    const {setLogin, user} = useLogin()
+    if(user){
+      return <Navigate to="/" />
+    }    
+    
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     
     const onSubmit = async (data: FieldValues) => {
+      setIsLoading(true)
         console.log(data);
+
+       try{
         const d = await axios.post("http://localhost:4000/login", data)
-        console.log(d);
+        setLogin(d.data)
+        setIsLoading(false)
+        setSuccess("Sucessfuldt login")
+       }catch(err){
+        console.log(err);
+        setError("could not login")
+       }
     }
 
   return (
@@ -60,8 +79,23 @@ export default function Login() {
             />
             <FormError error={errors.email} />
           </label>
+          {error && (
+            <p
+            style={{color: "red"}}
+            >
+              {error}
+            </p>
+          )}
+          {success && (
+            <p
+            style={{color: "green"}}
+            >
+              {success}
+            </p>
+          )}
           <button
           className='btn'
+          disabled={isLoading || !!success}
           >
             Login
           </button>

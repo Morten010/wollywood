@@ -1,0 +1,32 @@
+@import "../globalstyles.scss";
+
+.cartModal{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+    min-width: 200px;
+    max-width: 300px;
+    width: 100%;
+    user-select: none;
+    
+    background-color: white;
+    border: 1px solid $primary-color;
+    transform: translateY(calc(100% + 2rem));
+    .cartCard{
+        display: flex;
+        img{
+            width: 75px;
+            aspect-ratio: 2/3;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+            h3{
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

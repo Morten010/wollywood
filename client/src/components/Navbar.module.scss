@@ -9,24 +9,53 @@
     padding-bottom: 1rem;
     text-transform: uppercase;
     border-bottom: 2px solid $primary-color;
+    position: relative;
     h1{
         font-size: 3.8rem;
         font-weight: bolder;
         color: $primary-color;
     }
-    ul{
-        list-style: none;
+    .right{
         display: flex;
-        gap: 2rem;
-        font-size: 1.6rem;
-        transition: color 0.5s ease-in-out;
-        cursor: pointer;
-        a{
-            color: rgba(0, 0, 0, 0.5);
-            text-decoration: none;
-            &:hover{
-                color: $primary-color;
+        flex-direction: column;
+        align-items: flex-end;
+        ul{
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            font-size: 1.6rem;
+            transition: color 0.5s ease-in-out;
+            cursor: pointer;
+            a{
+                color: rgba(0, 0, 0, 0.5);
+                text-decoration: none;
+                &:hover{
+                    color: $primary-color;
+                }
             }
+        }
+        svg{
+            font-size: 3rem;
+            cursor: pointer;
+        }
+        .hidden{
+           display: none; 
+        }
+    }
+}
+@media (max-width: 720px) {
+    .nav{
+        .right{
+            ul{
+                display: none;
+            }
+            flex-direction: row;
+            gap: 1rem;
+        }
+        .right{
+            .hidden{
+                display: inline-block; 
+             }
         }
     }
 }
